@@ -5,7 +5,12 @@ const express = require("express"),
   request = require("request"),
   redis = require("redis");
 
-const client = redis.createClient();
+const client = redis.createClient({
+  port: process.env.REDISPORT,
+  host: process.env.REDISIP,
+  password: process.env.REDISPASS,
+  db: process.env.REDISDB,
+});
 const app = express();
 
 // Starts server
